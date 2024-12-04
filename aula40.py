@@ -15,9 +15,9 @@ while True:
         num_2_float = float(segundo_valor)
         numeros_validos = True
     except ValueError:
-        numeros_validos = None
+        numeros_validos = None  # Se for None significa que os numeros são invalidos
 
-    # Se for None significa que os numeros são invalidos
+   #Verifica se os numeros são validos, se não for, exibe a mesnagem e usa o "continue" para reiniciar o laço
     if numeros_validos is None:
         print('Um ou ambom os números digitados invalidos')
         continue
@@ -46,7 +46,14 @@ while True:
             print('Nunca deveria chegar aqui.')
     except ZeroDivisionError:
         print('Erro: Proibido divisão por 0')
-    sair = input('Quer sair? [s]im: ').lower().startswith('s')
+    # O método lower converte todos os caracteres alfabéticos de uma string para letras minúsculas.
+    entrada = input('Quer sair? [s]im ou [n]ão: ').lower()
 
-    if sair:
+    # O método startswith verifica se uma string começa com um determinado prefixo ou sequência de caracteres.
+    if entrada.startswith('s'):
+        print('Saindo...')
         break
+    elif entrada.startswith('n'):
+        print('Voçê escolheu não sair!')
+    else:
+        print('Entrada invalida, teste novamente!')
