@@ -14,7 +14,7 @@ while True:
         num_1_float = float(primeiro_valor)
         num_2_float = float(segundo_valor)
         numeros_validos = True
-    except:
+    except ValueError:
         numeros_validos = None
 
     # Se for None significa que os numeros são invalidos
@@ -25,29 +25,28 @@ while True:
     if operador not in '+-*/**//%':
         print('Operador inválido!')
         continue
-    if len(operador) > 1:
-        print('Digite apenas um operador.')
-        continue
 
     print('Realizando a sua conta. Veja o resultado abaixo.')
-
-    if operador == '+':
-        print(f'{num_1_float} + {num_2_float} = ',num_1_float + num_2_float)
-    elif operador == '-':
-        print(f'{num_1_float} - {num_2_float} = ', num_1_float - num_2_float)
-    elif operador == '/':
-        print(f'{num_1_float} / {num_2_float} = ', num_1_float / num_2_float)
-    elif operador == '*':
-        print(f'{num_1_float} * {num_2_float} = ', num_1_float * num_2_float)
-    elif operador == '//':
-        print(f'{num_1_float} // {num_2_float} = ', num_1_float // num_2_float)
-    elif operador == '**':
-        print(f'{num_1_float} ** {num_2_float} = ', num_1_float ** num_2_float)
-    elif operador == '%':
-        print(f'{num_1_float} % {num_2_float} = ', num_1_float % num_2_float)
-    else:
-        print('Nunca deveria chegar aqui.')
+    try:
+        if operador == '+':
+            print(f'{int(num_1_float)} + {int(num_2_float)} = {int(num_1_float + num_2_float)}')
+        elif operador == '-':
+            print(f'{int(num_1_float)} - {int(num_2_float)} =  {int(num_1_float - num_2_float)}')
+        elif operador == '/':
+            print(f'{int(num_1_float)} / {int(num_2_float)} = {int(num_1_float / num_2_float)}')
+        elif operador == '*':
+            print(f'{int(num_1_float)} * {int(num_2_float)} = {int(num_1_float * num_2_float)}')
+        elif operador == '//':
+            print(f'{int(num_1_float)} // {int(num_2_float)} = {num_1_float // num_2_float}')
+        elif operador == '**':
+            print(f'{int(num_1_float)} ** {int(num_2_float)} = {num_1_float ** num_2_float}')
+        elif operador == '%':
+            print(f'{int(num_1_float)} % {int(num_2_float)} = {num_1_float % num_2_float}')
+        else:
+            print('Nunca deveria chegar aqui.')
+    except ZeroDivisionError:
+        print('Erro: Proibido divisão por 0')
     sair = input('Quer sair? [s]im: ').lower().startswith('s')
 
-    if sair is True:
+    if sair:
         break
